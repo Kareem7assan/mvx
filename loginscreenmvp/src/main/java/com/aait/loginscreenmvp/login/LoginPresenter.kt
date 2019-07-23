@@ -22,7 +22,6 @@ class LoginPresenter(val repo: UserRepo) :LoginContract.LoginPresenter{
 
 
     override fun checkUser(user: User) {
-            //get method to save repo here
             if (repo.getUser(user)!=null){
                 saveUser(user)
                 loginView.showSuccess()

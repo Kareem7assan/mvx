@@ -1,1 +1,1 @@
-include ':app', ':loginscreenmvp'
+include ':app', ':loginscreenmvp', ':coremvvm'

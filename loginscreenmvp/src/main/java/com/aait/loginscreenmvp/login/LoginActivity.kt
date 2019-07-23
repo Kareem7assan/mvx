@@ -13,14 +13,7 @@ import com.aait.loginscreenmvp.MyLifeCycleObserver
 import com.aait.loginscreenmvp.main.MainActivity
 
 
-class LoginActivity : AppCompatActivity(),LoginContract.LoginView, MyLifeCycleObserver.OnLifeCycle {
-    override fun onForground() {
-        Toast.makeText(this,"forground",Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onBackGround() {
-        Toast.makeText(this,"background",Toast.LENGTH_SHORT).show()
-    }
+class LoginActivity : AppCompatActivity(),LoginContract.LoginView {
 
     override fun showSuccess() {
         Toast.makeText(this,"login success",Toast.LENGTH_SHORT).show()
@@ -43,7 +36,6 @@ class LoginActivity : AppCompatActivity(),LoginContract.LoginView, MyLifeCycleOb
         setContentView(R.layout.activity_login)
         val presenter = LoginPresenter(UserRepo())
         presenter.setView(this)
-        ProcessLifecycleOwner.get().lifecycle.addObserver(MyLifeCycleObserver(this))
 
         loginBtn.setOnClickListener {
             presenter.login(etEmail.text.toString(),etPassword.text.toString())
